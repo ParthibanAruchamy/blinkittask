@@ -1,0 +1,1 @@
+export const mainMenuItems = ['Vegetables & Fruits', 'Dairy & Breakfast', 'Munchies', 'Cold Drinks & Juices', 'Instant & Frozen Food', 'Tea, Coffee & Health Drinks', 'Bakery & Biscuits']
