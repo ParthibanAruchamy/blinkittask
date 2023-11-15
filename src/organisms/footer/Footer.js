@@ -1,9 +1,11 @@
 import React from 'react'
+import HorizontalWrapper from '../../atoms/horizontalWrapper'
+import styles from "./footer.module.scss";
 
 export default function Footer() {
   return (
-    <div>
+    <HorizontalWrapper className={styles.container}>
       Footer
-    </div>
+    </HorizontalWrapper>
   )
 }

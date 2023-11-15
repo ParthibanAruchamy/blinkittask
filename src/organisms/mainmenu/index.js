@@ -1,3 +1,3 @@
-import Mainmenu from "./Mainmenu";
+import MainMenu from "./MainMenu";
 
-export default Mainmenu;
+export default MainMenu;

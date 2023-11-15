@@ -1,16 +1,28 @@
 import React from "react";
-import { mainMenuItems } from "../../data/mainMenuItems";
-import Menuitems from "../../molecules/menuitems";
+import PropTypes from 'prop-types';
+import MainMenuItems from "../../molecules/mainMenuItems";
+import { productItems } from "../../data/productItems";
+import HorizontalWrapper from "../../atoms/horizontalWrapper";
+import styles from './mainMenu.module.scss';
 
-export default function Mainmenu({ setselectedSubCategory }) {
+function MainMenu({selectedMainCategory, setSelectedMainCategory}) {
   return (
-    <div className="flex flex-row border-0 pl-40 border-t-2 border-b-2">
-      {mainMenuItems.map((item, index) => (
-        <Menuitems
+    <HorizontalWrapper className={styles.container}>
+      {productItems.map((mainCategory, index) => (
+        <MainMenuItems
           key={index}
-          menu={item}
+          mainCategory={mainCategory}
+          selectedMainCategory={selectedMainCategory}
+          setSelectedMainCategory={setSelectedMainCategory}
         />
       ))}
-    </div>
+    </HorizontalWrapper>
   );
 }
+MainMenu.propTypes = {
+  selectedMainCategory: PropTypes.string,
+  setSelectedMainCategory: PropTypes.string,
+  }
+  
+  export default MainMenu;
+  

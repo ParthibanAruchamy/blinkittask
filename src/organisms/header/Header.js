@@ -1,16 +1,17 @@
-import React from 'react'
-import Logo from '../../atoms/logo'
-import HorizontalWrapper from '../../atoms/horizontalWrapper'
-import VerticalWrapper from '../../atoms/verticalWrapper'
-import SearchBar from '../../molecules/searchbar/SearchBar'
-import Cart from '../../molecules/cart'
+import React from "react";
+import Logo from "../../atoms/logo";
+import HorizontalWrapper from "../../atoms/horizontalWrapper";
+import SearchBar from "../../molecules/searchbar/SearchBar";
+import MyCart from "../../molecules/myCart";
 
 export default function Header() {
   return (
-          <HorizontalWrapper>
-            <Logo />
-            <SearchBar />
-            <Cart />
-          </HorizontalWrapper>
-  )
+    <HorizontalWrapper>
+      <>
+        <Logo />
+        <SearchBar />
+        <MyCart />
+      </>
+    </HorizontalWrapper>
+  );
 }

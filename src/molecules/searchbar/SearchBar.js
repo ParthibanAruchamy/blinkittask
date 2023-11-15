@@ -1,11 +1,11 @@
 import React from "react";
 import SerachBox from "../../atoms/serachBox";
-import { AiOutlineSearch } from "react-icons/ai";
+import HorizontalWrapper from "../../atoms/horizontalWrapper";
 
 export default function SearchBar() {
   return (
-    <div className="flex flex-row">
+    <HorizontalWrapper>
       <SerachBox />
-    </div>
+    </HorizontalWrapper>
   );
 }

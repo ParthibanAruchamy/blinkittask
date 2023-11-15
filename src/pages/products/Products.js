@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ProductTile from "../../molecules/producttile/ProductTile";
-import Mainmenu from "../../organisms/mainmenu";
 import ProductSideBar from "../../molecules/productsidebar";
 import { productItems } from "../../data/productItems";
-import { useSelector } from "react-redux";
+import MainMenu from "../../organisms/mainMenu";
+import VerticalWrapper from "../../atoms/verticalWrapper";
+import HorizontalWrapper from "../../atoms/horizontalWrapper";
+import Text from "../../atoms/text";
+import styles from './products.module.scss';
 
-export default function Products() {
-  const [selectedMainCategory, setSelectedMainCategory] = useState(false);
-  const [selectedSubCategory, setselectedSubCategory] = useState(null);
-  // const [productList, setproductList] = useState([]);
-  const cart = useSelector((state) => state.cart);
+function Products() {
+  const [selectedMainCategory, setSelectedMainCategory] = useState(productItems[0]?.id);
+  const [selectedSubCategory, setselectedSubCategory] = useState(productItems[0]?.items[0]?.id);
+  const [sideBarItems, setSideBarItems] = useState(productItems[0]?.items);
 
   const getProducts = React.useCallback(() => {
     let products = [];
@@ -39,36 +41,43 @@ export default function Products() {
     return category;
   }, [selectedSubCategory, selectedMainCategory]);
 
-  const updateCategory = (mainCategoryId, subCategoryId) => {
-    setSelectedMainCategory(mainCategoryId);
+
+  useEffect(() => {
+    setSideBarItems(productItems.filter((item) => item.id === selectedMainCategory))
+  }, [selectedMainCategory])
+
+  const updateCategory = (subCategoryId) => {
     setselectedSubCategory(subCategoryId);
   };
 
   return (
-    <div className="flex flex-col bg-gray-50 p-5">
-      <Mainmenu />
-      <div className="flex flex-row bg-gray-50 p-5">
-        <div className="flex flex-col w-1/4">
-          { productItems.map((item, index) => (
+    <VerticalWrapper className= {StyleSheet.container}>
+      <MainMenu {...{selectedMainCategory, setSelectedMainCategory}} />
+      <HorizontalWrapper className={styles.sideBarContainer}>
+        <VerticalWrapper className={styles.sideBarItem}>
+          { sideBarItems?.map((item, index) => (
             <ProductSideBar
               product={item}
               key={index}
+              selectedSubCategory={selectedSubCategory}
               setselectedSubCategory={updateCategory}
             />
           )) }
-        </div>
-        <div className="flex-1 flex flex-col">
-          { getCategory() ? <p className="font-bold border-b-2 py-2 mb-3 bg-gray-100 pl-5">{getCategory()}</p> : null }
-          <div className="w-full flex flex-row flex-wrap">
+        </VerticalWrapper>
+        <VerticalWrapper className={styles.productContainer}>
+          { getCategory() ? <Text className={styles.categoryHeaderText} value={getCategory()} /> : null }
+          <HorizontalWrapper className={styles.productTileContainer}>
             {getProducts()?.map((each, index) => (
-              <ProductTile product={each}
+              <ProductTile 
+              product={each}
               key={index}
-              inCartItem={cart.filter((cartItem) => cartItem.id === each.id)}
               />
             ))}
-          </div>
-        </div>
-      </div>
-    </div>
+          </HorizontalWrapper>
+        </VerticalWrapper>
+      </HorizontalWrapper>
+    </VerticalWrapper>
   );
 }
+
+export default Products

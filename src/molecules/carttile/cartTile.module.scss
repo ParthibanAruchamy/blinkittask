@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.smallText {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.boldText {
+    font-weight: 700;
+}
+
+.lineThroughText {
+    text-decoration: line-through;
+}
+
+.subContainer {
+    display: flex;
+    width: 40%;
+}
+
+.productDiv {
+    display: flex;
+    margin-left: 1rem;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+.productTile {
+        border-width: 2px;
+
+}

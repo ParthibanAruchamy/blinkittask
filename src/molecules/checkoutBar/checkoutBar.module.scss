@@ -1,0 +1,20 @@
+.checkoutBar {
+    display: flex;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    flex-direction: row;
+    flex: 1 1 0%;
+    justify-content: space-between;
+    border-radius: 0.5rem;
+    border-width: 2px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #047857;
+    cursor: pointer;
+}

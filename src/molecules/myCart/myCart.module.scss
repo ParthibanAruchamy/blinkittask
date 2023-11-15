@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    padding-right: 1.25rem;
+    flex: 1 1 0%;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+}
+
+.subContainer {
+    display: flex;
+    padding: 0.5rem;
+    margin: 1.5rem;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 0.5rem;
+    color: #ffffff;
+    background-color: #047857;
+}
+
+.textBold {
+    font-weight: 700;
+}
+
+.cartLogo {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+
+.cartWithItem {
+    display: flex;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    flex-direction: column;
+    color: #ffffff;
+    width: 100%;
+}
+
+.cartWithItemSub {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cartWithoutItem {
+    display: flex;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    flex-direction: column;
+    color: #ffffff;
+    width: 100%;
+}

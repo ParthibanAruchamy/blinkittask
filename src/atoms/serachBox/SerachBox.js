@@ -1,12 +1,28 @@
 import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import HorizontalWrapper from "../horizontalWrapper";
+import Input from "../input";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import styles from "./searchBox.module.scss";
 
-
-export default function SerachBox() {
+function SerachBox({ className = "" }) {
   return (
-    <div className="flex flex-row items-center ml-5">
-      <AiOutlineSearch />
-      <input type="text" placeholder='Search "products"' className="border-2 ml-1"></input>
-    </div>
+    <HorizontalWrapper className={classNames(styles.main, className)}>
+      <>
+        <AiOutlineSearch className={classNames(styles.icon, className)} />
+        <Input
+          type="text"
+          placeholder='Search "products"'
+          className={classNames(styles.inputBox, className)}
+        />
+      </>
+    </HorizontalWrapper>
   );
 }
+
+SerachBox.propTypes = {
+  className: PropTypes.string,
+};
+
+export default SerachBox;

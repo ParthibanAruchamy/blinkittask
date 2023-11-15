@@ -1,52 +1,38 @@
 import React from "react";
-// import { removeItem } from '../../Redux/cartSlice';
-import { useDispatch } from "react-redux";
-import { increaseCount, decreaseCount } from "../../helper/cartHelper";
-import { TfiMinus, TfiPlus } from "react-icons/tfi";
-import { removeItem } from "../../stores/cart";
+import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import QuantityButton from "../quantityButton";
+import { findInCart } from "../producttile/productTileHelper/productTileHelper";
+import CartImage from "../../atoms/cartImage";
+import Text from "../../atoms/text";
+import HorizontalWrapper from "../../atoms/horizontalWrapper";
+import VerticalWrapper from "../../atoms/verticalWrapper/VerticalWrapper";
+import styles from "./cartTile.module.scss";
 
 function CartTile({ product }) {
-
-    console.log(product);
-  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
 
   return (
     <>
-      <div className="flex items-center mx-8 px-6 py-5">
-        <div className="flex w-2/5">
-          <div className="w-20">
-            <img className="h-24" src={product?.productImage} alt="" />
-          </div>
-          <div className="flex flex-col justify-between ml-4 flex-grow">
-            <p className="text-sm">{product?.productName}</p>
-            <p className="text-sm">{product?.productQuantity}</p>
-            <p className="text-sm"><span className="font-bold">{product?.sellingPrice}</span> <span className="line-through">{product?.actualPrice} </span></p>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <TfiMinus
-            className="flex m-3 cursor-pointer hover:bg-red-600 hover:text-white"
-            onClick={() => decreaseCount(product, product.quantity, dispatch)}
-          />
-          <input
-            className="mx-2 border text-center w-8"
-            type="text"
-            value={product?.quantity}
-          />
-          <TfiPlus
-            className="flex m-3 cursor-pointer hover:bg-red-600 hover:text-white"
-            onClick={() => increaseCount(product, product.quantity, dispatch)}
-          />
-        </div>
-        <span className="text-center w-1/5 font-semibold text-sm">
-          {product?.sellingPrice.toFixed(2)}
-        </span>
-        <span className="text-center w-1/5 font-semibold text-sm">
-          {(product?.sellingPrice * product?.quantity).toFixed(2)}
-        </span>
-      </div>
+      <HorizontalWrapper className={styles.container}>  
+        <HorizontalWrapper className={styles.subContainer}>
+          <CartImage className={styles.productTile} imageUrl={product?.productImage} />
+          <VerticalWrapper className={styles.productDiv}>
+            <Text className={styles.smallText} value={product?.productName}/>
+            <Text className={styles.smallText} value={product?.productQuantity} />
+            <span className={styles.boldText}>{product?.sellingPrice}</span>
+            <span className={styles.lineThroughText}>{product?.actualPrice} </span>
+          </VerticalWrapper>
+        </HorizontalWrapper>
+        <QuantityButton product={product} count={findInCart(cart, product)} />
+      </HorizontalWrapper>
     </>
   );
 }
+
+CartTile.propTypes = {
+  className: PropTypes.string,
+  product: PropTypes.object,
+};
 
 export default CartTile;

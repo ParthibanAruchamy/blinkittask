@@ -1,25 +1,37 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { TfiPlus, TfiMinus } from "react-icons/tfi";
+import { useDispatch } from "react-redux";
+import {
+  decreaseCount,
+  increaseCount,
+} from "../../pages/cart/cartHelper/cartHelper";
+import VerticalWrapper from "../../atoms/verticalWrapper/VerticalWrapper";
+import HorizontalWrapper from "../../atoms/horizontalWrapper";
+import Text from "../../atoms/text";
+import styles from "./quantityButton.module.scss";
 
-export default function QuantityButton({
-  count,
-  setCount,
-  addOrIncrease,
-  removeOrDecrease,
-}) {
+function QuantityButton({ product, count }) {
+  const dispatch = useDispatch();
   return (
-    <div className="flex flex-col w-[70%] rounded-lg m-1.5 bg-green-700 text-white">
-      <div className="flex items-center justify-around">
+    <VerticalWrapper className={styles.container}>
+      <HorizontalWrapper className={styles.btnContainer}>
         <TfiMinus
-          className="flex m-3 cursor-pointer"
-          onClick={() => removeOrDecrease(setCount)}
+          className={styles.btnIcon}
+          onClick={() => decreaseCount(product, count, dispatch)}
         />
-        <p className="font-bold text-sm text-left m-2">{count}</p>
+        <Text className={styles.countText} value={count} />
         <TfiPlus
-          className="flex m-3 cursor-pointer"
-          onClick={() => addOrIncrease(setCount)}
+          className={styles.btnIcon}
+          onClick={() => increaseCount(product, count, dispatch)}
         />
-      </div>
-    </div>
+      </HorizontalWrapper>
+    </VerticalWrapper>
   );
 }
+QuantityButton.propTypes = {
+  product: PropTypes.object,
+  count: PropTypes.any,
+};
+
+export default QuantityButton;
