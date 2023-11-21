@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+}
+
+.emptyCartImage {
+    aspect-ratio: 1 / 1;
+    width: 10rem;
+}
+
+.noItemsText {
+    margin-top: 0.5rem;
+    font-weight: 700;
+}
+
+.continueShopping {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1.25rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: #ffffff;
+    background-color: #047857;
+}

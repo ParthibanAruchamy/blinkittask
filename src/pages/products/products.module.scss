@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    padding: 1.25rem;
+    flex-direction: column;
+    background-color: #F9FAFB;
+}
+
+.sideBarContainer {
+    display: flex;
+    padding: 1.25rem;
+    flex-direction: row;
+    background-color: #F9FAFB;
+}
+
+.sideBarItem {
+    flex-direction: column;
+    width: 25%;
+}
+.productContainer {
+    display: flex; 
+flex-direction: column; 
+flex: 1 1 0%;
+}
+.categoryHeaderText {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; 
+    padding-left: 1.25rem; 
+    margin-bottom: 0.75rem; 
+    border-bottom-width: 2px; 
+    font-weight: 700; 
+    background-color: #F3F4F6;    
+}
+.productTileContainer {
+    display: flex; 
+flex-direction: row; 
+flex-wrap: wrap; 
+width: 100%;
+}

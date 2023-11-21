@@ -1,0 +1,21 @@
+.mainMenuItems {
+    display: flex;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-left: 2.5rem;
+    flex-direction: row;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+.selected {
+    display: flex;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-left: 2.5rem;
+    flex-direction: row;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    background-color: #D1FAE5; 
+}
